@@ -45,7 +45,7 @@
 
 <script>
 import { useTheme } from 'vuetify'
-import Utils from '../services/Utils';
+import Utils from '../Services/Utils';
 
 export default {
   data() {
