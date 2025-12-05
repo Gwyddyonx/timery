@@ -94,31 +94,22 @@ export default {
       if (this.times.length < count - 1) {
         return "-"
       }
-
+    
       let lastSolves = this.times
         .toReversed()
         .slice(0, count - 1)
-        .map(function (t) {
-          return parseFloat(t.time)
-        })
-
-      // Adding last time to array
+        .map(t => parseFloat(t.time))
+    
       lastSolves.push(parseFloat(this.time))
-
-      //remove de max and min values 
-      let min = Math.min(...lastSolves);
-      let max = Math.max(...lastSolves);
-      lastSolves.splice(lastSolves.indexOf(min), 1);
-      lastSolves.splice(lastSolves.indexOf(max), 1);
-
-      let sum = lastSolves.reduce((accum, currnt) => {
-        return parseFloat(accum) + parseFloat(currnt)
-      }, 0)
-
-      let avg = sum / (count - 2)
-
+    
+      let trimCount = Math.floor(count * 0.05); 
+      lastSolves.sort((a, b) => a - b);
+    
+      let trimmed = lastSolves.slice(trimCount, lastSolves.length - trimCount);
+      let sum = trimmed.reduce((acc, curr) => acc + curr, 0);
+      let avg = sum / trimmed.length;
+    
       return avg.toFixed(2);
-
     }
 
   },
