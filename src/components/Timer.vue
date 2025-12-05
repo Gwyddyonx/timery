@@ -1,5 +1,5 @@
 <template>
-  <div class="" >
+  <div class="">
     <h1 :class="timerRunning || isPrepared ? 'running' : ''">{{ time }}</h1>
   </div>
 </template>
@@ -94,21 +94,21 @@ export default {
       if (this.times.length < count - 1) {
         return "-"
       }
-    
+
       let lastSolves = this.times
         .toReversed()
         .slice(0, count - 1)
         .map(t => parseFloat(t.time))
-    
+
       lastSolves.push(parseFloat(this.time))
-    
-      let trimCount = Math.floor(count * 0.05); 
-      lastSolves.sort((a, b) => a - b);
-    
+
+      let trimCount = Math.floor(count * 0.05);
+      lastSolves.sort((a, b) => a - b); 
+
       let trimmed = lastSolves.slice(trimCount, lastSolves.length - trimCount);
       let sum = trimmed.reduce((acc, curr) => acc + curr, 0);
       let avg = sum / trimmed.length;
-    
+
       return avg.toFixed(2);
     }
 
