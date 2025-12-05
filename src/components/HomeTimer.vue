@@ -19,7 +19,7 @@
 
 <script>
 import Timer from './Timer.vue';
-import Utils from '../services/Utils';
+import Utils from '../Services/Utils';
 import Records from './Records.vue';
 import History from './History.vue';
 
