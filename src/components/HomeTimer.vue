@@ -49,8 +49,7 @@ export default {
     },
     clearTimes() {
       localStorage.removeItem('times');
-      this.$refs.timer.times = [];
-      this.times = this.$refs.timer.times;
+      this.$refs.timer.times.splice(0);
       this.resetTimer()
     },
     deleteTime(index) {

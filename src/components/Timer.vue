@@ -132,7 +132,9 @@ export default {
     },
     loadTimes() {
       const savedTimes = localStorage.getItem('times')
-      this.times = savedTimes ? JSON.parse(savedTimes) : []
+      const times = savedTimes ? JSON.parse(savedTimes) : []
+
+      this.times.splice(0, this.times.length, ...times)
     }
   },
   mounted() {
